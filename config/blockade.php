@@ -45,11 +45,18 @@ return [
             'cookie' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
 
             /**
-             * Set the domain used for setting the cookie,
+             * The input field provided from the view.
+             */
+            'input_field' => 'blockage_password',
+
+            /**
+             * Set the cookie options.
              */
             'domain' => env('BLOCKADE_COOKIE_DOMAIN', env('APP_URL')),
 
-            'input_field' => 'blockage_password',
+            'duration' => 60 * 24 * 7,
+
+            'path' => null,
 
         ],
 

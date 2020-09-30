@@ -46,8 +46,11 @@ class BlockadeMiddleware
             return $this->handler->getFailedResponse();
         }
 
-        // TODO attempt authentication & store for request
+        // Attempt authenticating with the given authentication method
+        if ( ! $this->handler->attemptAuthentication($request)) {
+            return $this->handler->getFailedResponse();
+        }
 
-        return $next($request);
+        return $this->handler->rememberSuccessfulAuthentication($request, $next);
     }
 }
