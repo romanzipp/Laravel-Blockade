@@ -47,13 +47,13 @@ class CookieStore extends AbstractStore implements StoreContract
     protected function buildCookie(): Cookie
     {
         return cookie(
-            config('blockade.stores.name'),
+            config('blockade.stores.cookie.name'),
             $this->getPasswordHash(
                 config('blockade.password')
             ),
-            config('blockade.stores.duration'),
-            config('blockade.stores.path'),
-            config('blockade.stores.domain')
+            config('blockade.stores.cookie.duration'),
+            config('blockade.stores.cookie.path'),
+            config('blockade.stores.cookie.domain')
         );
     }
 }
