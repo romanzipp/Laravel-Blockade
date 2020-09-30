@@ -3,6 +3,7 @@
 namespace romanzipp\Blockade\Services;
 
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
+use romanzipp\Blockade\Stores\Contracts\StoreContract;
 
 final class Blockade
 {
@@ -25,6 +26,18 @@ final class Blockade
     {
         return app(
             config('blockade.handler')
+        );
+    }
+
+    /**
+     * Get the currently enabled blockade store.
+     *
+     * @return \romanzipp\Blockade\Stores\Contracts\StoreContract
+     */
+    public static function getStore(): StoreContract
+    {
+        return app(
+            config('blockade.store')
         );
     }
 }
