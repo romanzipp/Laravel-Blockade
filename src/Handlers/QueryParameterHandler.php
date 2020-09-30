@@ -67,9 +67,18 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
      */
     public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse
     {
-        $response = redirect(
-            $request->path() // Do not use fullUrl() to avoid redirect loops
-        );
+        $parameters = $request->query();
+
+        unset($parameters[config('blockade.handlers.query.parameter')]);
+
+        $url = $request->path();
+
+        if ( ! empty($parameters)) {
+            $url .= '?';
+            $url .= http_build_query($parameters);
+        }
+
+        $response = redirect($url);
 
         return $this->store->storeSuccessState($request, $response);
     }
