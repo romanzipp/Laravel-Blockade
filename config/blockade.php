@@ -59,6 +59,17 @@ return [
 
         ],
 
+        /**
+         * @see \romanzipp\Blockade\Handlers\QueryParameterHandler
+         */
+        'query' => [
+
+            /**
+             * The query parameter to look for.
+             */
+            'parameter' => 'blockage_password',
+        ],
+
     ],
 
     /**

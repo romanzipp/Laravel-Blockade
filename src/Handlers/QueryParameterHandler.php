@@ -8,7 +8,7 @@ use romanzipp\Blockade\Handlers\Concerns\UsesCookieToStoreAuthentication;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
-class FormHandler extends AbstractHandler implements HandlerContract
+class QueryParameterHandler extends AbstractHandler implements HandlerContract
 {
     use UsesCookieToStoreAuthentication;
 
@@ -35,8 +35,8 @@ class FormHandler extends AbstractHandler implements HandlerContract
      */
     public function requestAttemptsAuthentication(Request $request): bool
     {
-        return $request->filled(config('blockade.handlers.form.input_field'))
-            && $request->isMethod('POST');
+        return $request->filled(config('blockade.handlers.query.parameter'))
+            && $request->isMethod('GET');
     }
 
     /**
@@ -47,8 +47,8 @@ class FormHandler extends AbstractHandler implements HandlerContract
      */
     public function attemptAuthentication(Request $request): bool
     {
-        $password = $request->input(
-            config('blockade.handlers.form.input_field')
+        $password = $request->query(
+            config('blockade.handlers.query.parameter')
         );
 
         if (empty($password)) {
