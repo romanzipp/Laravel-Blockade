@@ -8,9 +8,9 @@ trait ValidatesPassword
      * Check if a given plaintext password matches the configured password.
      *
      * @param string $password
-     * @return string
+     * @return bool
      */
-    protected function passwordMatchesConfigured(string $password): string
+    protected function passwordMatchesConfigured(string $password): bool
     {
         return $this->getPasswordHash($password) === $this->getPasswordHash(config('blockade.password'));
     }
@@ -19,9 +19,9 @@ trait ValidatesPassword
      * Check if a given has matches the configured password hash.
      *
      * @param string $hash
-     * @return string
+     * @return bool
      */
-    protected function hashMatchesConfigured(string $hash): string
+    protected function hashMatchesConfigured(string $hash): bool
     {
         return $hash === $this->getPasswordHash(config('blockade.password'));
     }
