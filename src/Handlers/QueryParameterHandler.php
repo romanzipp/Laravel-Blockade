@@ -75,4 +75,14 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
             $this->buildCookie()
         );
     }
+
+    /**
+     * Get the response for failed or missing authentication.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function getFailedResponse(): SymfonyResponse
+    {
+        return response()->view('blockade::denied', [], 401);
+    }
 }

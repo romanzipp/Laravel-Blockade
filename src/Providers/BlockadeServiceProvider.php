@@ -19,6 +19,11 @@ class BlockadeServiceProvider extends ServiceProvider
         $this->publishes([
             dirname(__DIR__) . '/../config/blockade.php' => config_path('blockade.php'),
         ], 'config');
+
+        $this->loadViewsFrom(
+            dirname(__DIR__) . '/../../views',
+            'blockade'
+        );
     }
 
     /**
