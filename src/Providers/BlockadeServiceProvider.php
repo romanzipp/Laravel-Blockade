@@ -34,7 +34,8 @@ class BlockadeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/../config/blockade.php', 'blockade'
+            dirname(__DIR__) . '/../config/blockade.php',
+            'blockade'
         );
 
         $this->app->singleton(StoreContract::class, function () {

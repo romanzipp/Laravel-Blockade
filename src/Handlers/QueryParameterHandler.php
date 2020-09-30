@@ -4,13 +4,13 @@ namespace romanzipp\Blockade\Handlers;
 
 use Closure;
 use Illuminate\Http\Request;
-use romanzipp\Blockade\Handlers\Concerns\UsesCookieToStoreAuthentication;
+use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class QueryParameterHandler extends AbstractHandler implements HandlerContract
 {
-    use UsesCookieToStoreAuthentication;
+    use ValidatesPassword;
 
     /**
      * Check if the current request is already authenticated.
@@ -20,11 +20,11 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
      */
     public function isAuthenticated(Request $request): bool
     {
-        if ( ! $cookie = $this->getCookieFromRequest($request)) {
+        if ( ! $hash = $this->store->getHash($request)) {
             return false;
         }
 
-        return $this->hashMatchesConfigured($cookie);
+        return $this->hashMatchesConfigured($hash);
     }
 
     /**
@@ -71,9 +71,7 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
             $request->fullUrl()
         );
 
-        return $response->withCookie(
-            $this->buildCookie()
-        );
+        return $this->store->storeSuccessState($request, $response);
     }
 
     /**
