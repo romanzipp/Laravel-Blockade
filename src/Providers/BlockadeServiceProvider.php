@@ -3,6 +3,8 @@
 namespace romanzipp\Blockade\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
+use romanzipp\Blockade\Services\Blockade;
 
 class BlockadeServiceProvider extends ServiceProvider
 {
@@ -28,5 +30,21 @@ class BlockadeServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             dirname(__DIR__) . '/../config/blockade.php', 'blockade'
         );
+
+        $this->app->singleton(BlockadeMiddleware::class, function () {
+            return new BlockadeMiddleware(
+                Blockade::getHandler()
+            );
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return [Blockade::class];
     }
 }

@@ -18,14 +18,25 @@ return [
     'title' => 'Under Construction',
 
     /**
+     * Define which routes should be excluded for blockade check.
+     */
+    'excluded' => [],
+
+    /**
      * Specify the authentication handler used for granting access.
      *
      * @see \romanzipp\Blockade\Handlers\HandlerContract
      */
     'handler' => \romanzipp\Blockade\Handlers\CookieHandler::class,
 
+    /**
+     * Specify options for each handler.
+     */
     'handlers' => [
 
+        /**
+         * @see \romanzipp\Blockade\Handlers\CookieHandler
+         */
         'cookie' => [
 
             /**
@@ -37,6 +48,8 @@ return [
              * Set the domain used for setting the cookie,
              */
             'domain' => env('BLOCKADE_COOKIE_DOMAIN', env('APP_URL')),
+
+            'input_field' => 'blockage_password',
 
         ],
 
