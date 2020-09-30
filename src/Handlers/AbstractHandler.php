@@ -40,7 +40,7 @@ abstract class AbstractHandler
      */
     protected function displayView(Request $request, string $view, array $data = []): SymfonyResponse
     {
-        $data['returnTo'] = $request->url();
+        $data['returnTo'] = $request->fullUrl();
 
         return response()->view($view, $data, 401);
     }

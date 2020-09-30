@@ -6,10 +6,15 @@ use Closure;
 use Illuminate\Http\Request;
 use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
+use Spatie\Url\Url;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class FormHandler extends AbstractHandler implements HandlerContract
 {
+    private const INPUT_RETURN_TO = 'return_to';
+
+    private const QUERY_ERROR = 'blockade_error';
+
     use ValidatesPassword;
 
     /**
@@ -71,6 +76,10 @@ class FormHandler extends AbstractHandler implements HandlerContract
             $request->fullUrl()
         );
 
+        if ($this->requestWantsToReturn($request)) {
+            $response = $this->redirectBack($request);
+        }
+
         return $this->store->storeSuccessState($request, $response);
     }
 
@@ -83,6 +92,47 @@ class FormHandler extends AbstractHandler implements HandlerContract
      */
     public function getFailedResponse(Request $request, array $data = []): SymfonyResponse
     {
+        if ($this->requestWantsToReturn($request)) {
+            return $this->redirectBack($request, false);
+        }
+        if ($request->has(self::QUERY_ERROR)) {
+            $data['message'] = trans('blockade::messages.errors.wrong_password');
+        }
+
         return $this->displayView($request, 'blockade::password-form', $data);
+    }
+
+    /**
+     * Check if the request has a "return to" field.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return bool
+     */
+    protected function requestWantsToReturn(Request $request): bool
+    {
+        return $request->has(self::INPUT_RETURN_TO);
+    }
+
+    /**
+     * Build a redirect response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    protected function redirectBack(Request $request, bool $success = true)
+    {
+        $url = Url::fromString(
+            $request->input(self::INPUT_RETURN_TO)
+        );
+
+        if ($success) {
+            $url = $url->withoutQueryParameter(self::QUERY_ERROR);
+        } else {
+            $url = $url->withQueryParameter(self::QUERY_ERROR, '1');
+        }
+
+        return redirect()->to(
+            (string) $url
+        );
     }
 }

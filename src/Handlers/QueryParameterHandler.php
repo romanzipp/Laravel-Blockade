@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
+use Spatie\Url\Url;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class QueryParameterHandler extends AbstractHandler implements HandlerContract
@@ -67,18 +68,12 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
      */
     public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse
     {
-        $parameters = $request->query();
-
-        unset($parameters[config('blockade.handlers.query.parameter')]);
-
-        $url = $request->path();
-
-        if ( ! empty($parameters)) {
-            $url .= '?';
-            $url .= http_build_query($parameters);
-        }
-
-        $response = redirect($url);
+        $response = redirect(
+            Url::fromString($request->fullUrl())
+                ->withoutQueryParameter(
+                    config('blockade.handlers.query.parameter')
+                )
+        );
 
         return $this->store->storeSuccessState($request, $response);
     }
