@@ -2,7 +2,7 @@
 
 namespace romanzipp\Blockade\Services;
 
-use romanzipp\Blockade\Handlers\HandlerContract;
+use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 
 final class Blockade
 {
@@ -19,7 +19,7 @@ final class Blockade
     /**
      * Get the currently enabled blockade handler.
      *
-     * @return \romanzipp\Blockade\Handlers\HandlerContract
+     * @return \romanzipp\Blockade\Handlers\Contracts\HandlerContract
      */
     public static function getHandler(): HandlerContract
     {

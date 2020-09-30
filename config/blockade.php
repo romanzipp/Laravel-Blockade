@@ -25,9 +25,9 @@ return [
     /**
      * Specify the authentication handler used for granting access.
      *
-     * @see \romanzipp\Blockade\Handlers\HandlerContract
+     * @see \romanzipp\Blockade\Handlers\Contracts\HandlerContract
      */
-    'handler' => \romanzipp\Blockade\Handlers\CookieHandler::class,
+    'handler' => \romanzipp\Blockade\Handlers\FormHandler::class,
 
     /**
      * Specify options for each handler.
@@ -35,23 +35,31 @@ return [
     'handlers' => [
 
         /**
-         * @see \romanzipp\Blockade\Handlers\CookieHandler
+         * @see \romanzipp\Blockade\Handlers\FormHandler
          */
-        'cookie' => [
-
-            /**
-             * Set the cookie name used for the cookie handler.
-             */
-            'cookie' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
+        'form' => [
 
             /**
              * The input field provided from the view.
              */
             'input_field' => 'blockage_password',
 
-            /**
-             * Set the cookie options.
-             */
+        ],
+
+    ],
+
+    /**
+     * Stores define where to store a successful authentication state.
+     */
+    'stores' => [
+
+        /**
+         * The cookie stores saves the password hash as a browser cookie.
+         */
+        'cookie' => [
+
+            'name' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
+
             'domain' => env('BLOCKADE_COOKIE_DOMAIN', env('APP_URL')),
 
             'duration' => 60 * 24 * 7,

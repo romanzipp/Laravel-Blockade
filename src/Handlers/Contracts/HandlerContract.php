@@ -1,6 +1,6 @@
 <?php
 
-namespace romanzipp\Blockade\Handlers;
+namespace romanzipp\Blockade\Handlers\Contracts;
 
 use Closure;
 use Illuminate\Http\Request;

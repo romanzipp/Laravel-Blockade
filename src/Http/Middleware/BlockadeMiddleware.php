@@ -3,13 +3,13 @@
 namespace romanzipp\Blockade\Http\Middleware;
 
 use Closure;
-use romanzipp\Blockade\Handlers\HandlerContract;
+use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use romanzipp\Blockade\Services\Blockade;
 
 class BlockadeMiddleware
 {
     /**
-     * @var \romanzipp\Blockade\Handlers\HandlerContract
+     * @var \romanzipp\Blockade\Handlers\Contracts\HandlerContract
      */
     private $handler;
 

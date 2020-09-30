@@ -4,10 +4,14 @@ namespace romanzipp\Blockade\Handlers;
 
 use Closure;
 use Illuminate\Http\Request;
+use romanzipp\Blockade\Handlers\Concerns\UsesCookieToStoreAuthentication;
+use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
-class CookieHandler extends AbstractHandler implements HandlerContract
+class FormHandler extends AbstractHandler implements HandlerContract
 {
+    use UsesCookieToStoreAuthentication;
+
     /**
      * Check if the current request is already authenticated.
      *
@@ -16,15 +20,13 @@ class CookieHandler extends AbstractHandler implements HandlerContract
      */
     public function isAuthenticated(Request $request): bool
     {
-        $cookie = $request->cookie(
-            config('blockade.handlers.cookie.cookie')
-        );
+        $cookie = $this->getCookieFromRequest($request);
 
         if ( ! $cookie) {
             return false;
         }
 
-        return $this->hashMatches($cookie);
+        return $this->hashMatchesConfigured($cookie);
     }
 
     /**
@@ -35,7 +37,7 @@ class CookieHandler extends AbstractHandler implements HandlerContract
      */
     public function requestAttemptsAuthentication(Request $request): bool
     {
-        if ( ! $request->filled(config('blockade.handlers.cookie.input_field'))) {
+        if ( ! $request->filled(config('blockade.handlers.form.input_field'))) {
             return false;
         }
 
@@ -55,14 +57,14 @@ class CookieHandler extends AbstractHandler implements HandlerContract
     public function attemptAuthentication(Request $request): bool
     {
         $password = $request->input(
-            config('blockade.handlers.cookie.input_field')
+            config('blockade.handlers.form.input_field')
         );
 
         if (empty($password)) {
             return false;
         }
 
-        if ( ! $this->passwordMatches($password)) {
+        if ( ! $this->passwordMatchesConfigured($password)) {
             return false;
         }
 
@@ -82,31 +84,8 @@ class CookieHandler extends AbstractHandler implements HandlerContract
             $request->fullUrl()
         );
 
-        $cookie = cookie(
-            config('blockade.handlers.cookie.cookie'),
-            $this->getPasswordHash(
-                config('blockade.password')
-            ),
-            config('blockade.handlers.cookie.duration'),
-            config('blockade.handlers.cookie.path'),
-            config('blockade.handlers.cookie.domain')
+        return $response->withCookie(
+            $this->buildCookie()
         );
-
-        return $response->withCookie($cookie);
-    }
-
-    private function passwordMatches(string $password): string
-    {
-        return $this->getPasswordHash($password) === $this->getPasswordHash(config('blockade.password'));
-    }
-
-    private function hashMatches(string $hash): string
-    {
-        return $hash === $this->getPasswordHash(config('blockade.password'));
-    }
-
-    private function getPasswordHash(string $password): string
-    {
-        return hash('sha256', $password);
     }
 }
