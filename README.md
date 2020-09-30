@@ -7,6 +7,8 @@
 
 A simple but highly customizable package for preventing access to private or WIP Laravel projects.
 
+![](https://raw.githubusercontent.com/romanzipp/Laravel-Blockade/master/preview.png)
+
 ## Installation
 
 ```
