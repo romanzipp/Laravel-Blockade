@@ -78,7 +78,7 @@ return [
     'stores' => [
 
         /**
-         * The cookie stores saves the password hash as a browser cookie.
+         * @see \romanzipp\Blockade\Stores\CookieStore
          */
         'cookie' => [
 
@@ -89,6 +89,15 @@ return [
             'duration' => 60 * 24 * 7,
 
             'path' => null,
+
+        ],
+
+        /**
+         * @see \romanzipp\Blockade\Stores\SessionStore
+         */
+        'session' => [
+
+            'key' => env('BLOCKADE_SESSION_KEY', 'blockade_hash'),
 
         ],
 
