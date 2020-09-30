@@ -4,7 +4,6 @@ namespace romanzipp\Blockade\Handlers;
 
 use Illuminate\Http\Request;
 use romanzipp\Blockade\Stores\Contracts\StoreContract;
-use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 abstract class AbstractHandler
 {
@@ -36,16 +35,6 @@ abstract class AbstractHandler
         }
 
         return false;
-    }
-
-    /**
-     * Get the response for failed or missing authentication.
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function getFailedResponse(): SymfonyResponse
-    {
-        return response()->view('blockade::password', [], 401);
     }
 
     protected function passwordMatchesConfigured(string $password): string
