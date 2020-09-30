@@ -25,9 +25,22 @@ return [
     /**
      * Specify the authentication handler used for granting access.
      *
-     * @see \romanzipp\Blockade\Handlers\Contracts\HandlerContract
+     * Available handlers:
+     *
+     * @see \romanzipp\Blockade\Handlers\FormHandler
+     * @see \romanzipp\Blockade\Handlers\QueryParameterHandler
      */
     'handler' => \romanzipp\Blockade\Handlers\FormHandler::class,
+
+    /**
+     * Specify where to store the authentication state.
+     *
+     * Available stores:
+     *
+     * @see \romanzipp\Blockade\Stores\CookieStore
+     * @see \romanzipp\Blockade\Stores\SessionStore
+     */
+    'store' => \romanzipp\Blockade\Stores\CookieStore::class,
 
     /**
      * Specify options for each handler.

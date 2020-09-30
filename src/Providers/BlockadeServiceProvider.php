@@ -3,8 +3,9 @@
 namespace romanzipp\Blockade\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
+use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use romanzipp\Blockade\Services\Blockade;
+use romanzipp\Blockade\Stores\Contracts\StoreContract;
 
 class BlockadeServiceProvider extends ServiceProvider
 {
@@ -31,10 +32,12 @@ class BlockadeServiceProvider extends ServiceProvider
             dirname(__DIR__) . '/../config/blockade.php', 'blockade'
         );
 
-        $this->app->singleton(BlockadeMiddleware::class, function () {
-            return new BlockadeMiddleware(
-                Blockade::getHandler()
-            );
+        $this->app->singleton(StoreContract::class, function () {
+            return Blockade::getStore();
+        });
+
+        $this->app->singleton(HandlerContract::class, function () {
+            return Blockade::getHandler();
         });
     }
 
