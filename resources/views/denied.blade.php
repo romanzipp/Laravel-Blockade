@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{{ config('blockade.title', 'Under Construction') }}</title>
+@extends('blockade::layout.layout')
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+@section('content')
 
-</head>
-<body>
+    <h1 class="text-center text-2xl sm:text-3xl font-bold">
+        {{ config('blockade.branding.title') }}
+    </h1>
 
-    <div class="container mx-auto">
+    <div class="space-y-1 text-gray-700 text-sm">
 
-        <h1 class="mb-4 text-center text-5xl font-bold">
-            {{ config('blockade.title', 'Under Construction') }}
-        </h1>
+        <p>
+            {{ trans('blockade::messages.descriptions.what_happened') }}
+        </p>
+
+        <p>
+            {{ trans('blockade::messages.descriptions.access_with_password') }}
+        </p>
 
     </div>
 
-</body>
-</html>
+    @isset($message)
+
+        @include('blockade::partials.error', ['message' => $message])
+
+    @endisset
+
+@endsection
