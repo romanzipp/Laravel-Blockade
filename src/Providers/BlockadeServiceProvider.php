@@ -21,13 +21,16 @@ class BlockadeServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/../../assets' => public_path('vendor/blockade'),
+            __DIR__ . '/../../resources/assets' => public_path('vendor/blockade'),
         ], 'public');
 
-        $this->loadViewsFrom(
-            __DIR__ . '/../../views',
-            'blockade'
-        );
+        $this->publishes([
+            __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/blockade'),
+        ]);
+
+        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'blockade');
+
+        $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'blockade');
     }
 
     /**
@@ -37,10 +40,7 @@ class BlockadeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->mergeConfigFrom(
-            __DIR__ . '/../../config/blockade.php',
-            'blockade'
-        );
+        $this->mergeConfigFrom(__DIR__ . '/../../config/blockade.php', 'blockade');
 
         $this->app->singleton(StoreContract::class, function () {
             return Blockade::getStore();

@@ -17,7 +17,7 @@
 
             @if(config('blockade.branding.logo_url'))
 
-                <img src="{{ config('blockade.branding.logo_url') }}" alt="{{ config('app.name') }}" class="h-16">
+                <img src="{{ asset(config('blockade.branding.logo_url')) }}" alt="{{ config('app.name') }}" class="h-16">
 
             @else
 
@@ -44,12 +44,11 @@
                 <div class="space-y-1 text-gray-700 text-sm">
 
                     <p>
-                        @lang('blockade::messages.descriptions.what_happened')
+                        {{ trans('blockade::messages.descriptions.what_happened') }}
                     </p>
 
                     <p>
                         {{ trans('blockade::messages.descriptions.access_with_password') }}
-                        @lang('blockade::messages.descriptions.access_with_password')
                     </p>
 
                 </div>
@@ -62,13 +61,13 @@
 
                             <input type="password"
                                    name="{{ config('blockade.handlers.cookie.input_field') }}"
-                                   placeholder="Password"
+                                   placeholder="{{ trans('blockade::messages.password') }}"
                                    autofocus
                                    class="px-4 py-2 bg-gray-200 rounded-l-md outline-none focus:bg-gray-300 transition-colors duration-150 placeholder-gray-600">
 
                             <button type="submit"
                                     class="bg-blue-600 hover:bg-blue-700 transition-colors duration-100 px-6 py-2 rounded-r-md uppercase text-sm text-white outline-none">
-                                Submit
+                                {{ trans('blockade::messages.submit') }}
                             </button>
 
                         </div>
