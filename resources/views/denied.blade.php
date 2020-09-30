@@ -12,10 +12,6 @@
             {{ trans('blockade::messages.descriptions.what_happened') }}
         </p>
 
-        <p>
-            {{ trans('blockade::messages.descriptions.access_with_password') }}
-        </p>
-
     </div>
 
     @isset($message)
