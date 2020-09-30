@@ -42,7 +42,7 @@ class FormHandlerTest extends TestCase
     {
         config(['blockade.store' => CookieStore::class]);
 
-        $response = $this->post('/', [
+        $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'bar',
         ]);
 
@@ -55,7 +55,7 @@ class FormHandlerTest extends TestCase
     {
         config(['blockade.store' => CookieStore::class]);
 
-        $response = $this->post('/', [
+        $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'foo',
         ]);
 
@@ -84,7 +84,7 @@ class FormHandlerTest extends TestCase
     {
         config(['blockade.store' => SessionStore::class]);
 
-        $response = $this->post('/', [
+        $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'bar',
         ]);
 
@@ -97,7 +97,7 @@ class FormHandlerTest extends TestCase
     {
         config(['blockade.store' => SessionStore::class]);
 
-        $response = $this->post('/', [
+        $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'foo',
         ]);
 

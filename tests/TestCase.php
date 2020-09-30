@@ -22,9 +22,12 @@ class TestCase extends BaseTestCase
 
         $this->app->singleton(BaseKernel::class, Kernel::class);
 
-        $this->app['router']->get('/', function (Request $request) {
-            return 'Hello World';
-        });
+        $this
+            ->app['router']
+            ->get('/', function (Request $request) {
+                return 'Hello World';
+            })
+            ->middleware('web');
     }
 
     protected function getPackageProviders($app)
