@@ -57,6 +57,7 @@ class FormHandlerTest extends TestCase
 
         $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'foo',
+            'return_to' => '/',
         ]);
 
         $response->assertStatus(302);
@@ -99,6 +100,7 @@ class FormHandlerTest extends TestCase
 
         $response = $this->post(route('blockade.validate'), [
             'blockade_password' => 'foo',
+            'return_to' => '/',
         ]);
 
         $response->assertStatus(302);

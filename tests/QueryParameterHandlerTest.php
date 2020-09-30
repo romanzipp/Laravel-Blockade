@@ -67,7 +67,7 @@ class QueryParameterHandlerTest extends TestCase
         $response = $this->get('/?foo=foo&blockade_password=foo&bar=bar');
 
         $response->assertStatus(302);
-        $response->assertRedirect('/?foo=foo&bar=bar');
+        $response->assertRedirect('/?bar=bar&foo=foo');
         $response->assertCookie('blockade', $this->getPasswordHash('foo'));
     }
 
@@ -116,7 +116,7 @@ class QueryParameterHandlerTest extends TestCase
         $response = $this->get('/?foo=foo&blockade_password=foo&bar=bar');
 
         $response->assertStatus(302);
-        $response->assertRedirect('/?foo=foo&bar=bar');
+        $response->assertRedirect('/?bar=bar&foo=foo');
         $response->assertSessionHas('blockade_hash', $this->getPasswordHash('foo'));
     }
 }
