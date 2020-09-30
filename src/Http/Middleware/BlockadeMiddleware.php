@@ -51,6 +51,6 @@ class BlockadeMiddleware
             return $this->handler->getFailedResponse();
         }
 
-        return $this->handler->rememberSuccessfulAuthentication($request, $next);
+        return $this->handler->getSuccessResponse($request, $next);
     }
 }

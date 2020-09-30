@@ -47,7 +47,7 @@ interface HandlerContract
      * @param \Closure $next
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function rememberSuccessfulAuthentication(Request $request, Closure $next): SymfonyResponse;
+    public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse;
 
     /**
      * Get the response for failed or missing authentication.
