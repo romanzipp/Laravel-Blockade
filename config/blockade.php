@@ -37,12 +37,22 @@ return [
      */
     'store' => \romanzipp\Blockade\Stores\CookieStore::class,
 
+    /**
+     * Routing options.
+     */
+    'routes' => [
+
+        'prefix' => 'blockade',
+
+    ],
+
+    /**
+     * Branding options.
+     */
     'branding' => [
 
-        /**
-         * Set a custom logo url.
-         */
         'logo_url' => null,
+
     ],
 
     /**
@@ -55,9 +65,6 @@ return [
          */
         'form' => [
 
-            /**
-             * The input field provided from the view.
-             */
             'input_field' => 'blockade_password',
 
         ],
@@ -67,10 +74,8 @@ return [
          */
         'query' => [
 
-            /**
-             * The query parameter to look for.
-             */
             'parameter' => 'blockade_password',
+
         ],
 
     ],
