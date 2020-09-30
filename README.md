@@ -33,7 +33,7 @@ $ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeSe
 
 ### Handlers
 
-Handlers are responsible validating authentication requests and sending successful or failed responses. You can set the active handler in [`blockade.handler`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L33) and customize each handler individually via the [`blockade.handlers.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L48) config entries.
+Handlers are responsible validating authentication requests and sending successful or failed responses. You can set the active handler in [`blockade.handler`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L28) and customize each handler individually via the [`blockade.handlers.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L51) config entries.
 
 | Handler | Description | Class |
 | --- | --- | --- |
@@ -42,7 +42,7 @@ Handlers are responsible validating authentication requests and sending successf
 
 ### Stores
 
-Stores are storing (how surprising) the authentication state for later requests. You can set the active store in [`blockade.store`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L43) and customize each store individually via the [`blockade.stores.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L78) config entries.
+Stores are storing (how surprising) the authentication state for later requests. You can set the active store in [`blockade.store`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L38) and customize each store individually via the [`blockade.stores.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L81) config entries.
 
 | Store | Description | Class |
 | --- | --- | --- |
