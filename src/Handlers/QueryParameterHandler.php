@@ -68,7 +68,7 @@ class QueryParameterHandler extends AbstractHandler implements HandlerContract
     public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse
     {
         $response = redirect(
-            $request->fullUrl()
+            $request->path() // Do not use fullUrl() to avoid redirect loops
         );
 
         return $this->store->storeSuccessState($request, $response);
