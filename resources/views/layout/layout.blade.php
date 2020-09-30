@@ -17,7 +17,7 @@
 
             @if(config('blockade.branding.logo_url'))
 
-                <img src="{{ asset(config('blockade.branding.logo_url')) }}" alt="{{ config('app.name') }}" class="h-16">
+                <img src="{{ asset(config('blockade.branding.logo_url')) }}" alt="{{ config('app.name') }}" class="h-12">
 
             @else
 
