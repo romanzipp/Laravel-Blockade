@@ -40,11 +40,6 @@ return [
     'branding' => [
 
         /**
-         * Set the title displayed on the blockade view.
-         */
-        'title' => 'Under Construction',
-
-        /**
          * Set a custom logo url.
          */
         'logo_url' => null,

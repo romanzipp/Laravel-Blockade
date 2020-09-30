@@ -3,7 +3,7 @@
 @section('content')
 
     <h1 class="text-center text-2xl sm:text-3xl font-bold">
-        {{ config('blockade.branding.title') }}
+        {{ trans('blockade::messages.title') }}
     </h1>
 
     <div class="space-y-1 text-gray-700 text-sm">

@@ -2,6 +2,8 @@
 
 return [
 
+    'title' => 'Under Construction',
+
     'errors' => [
         'wrong_password' => 'The provided password is invalid',
     ],
