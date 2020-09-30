@@ -77,10 +77,11 @@ class FormHandler extends AbstractHandler implements HandlerContract
     /**
      * Get the response for failed or missing authentication.
      *
+     * @param array $data
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getFailedResponse(): SymfonyResponse
+    public function getFailedResponse(array $data = []): SymfonyResponse
     {
-        return response()->view('blockade::password-form', [], 401);
+        return response()->view('blockade::password-form', $data, 401);
     }
 }

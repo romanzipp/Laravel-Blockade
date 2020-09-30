@@ -44,11 +44,12 @@
                 <div class="space-y-1 text-gray-700 text-sm">
 
                     <p>
-                        It looks like the page you are trying to visit is currently under construction.
+                        @lang('blockade::messages.descriptions.what_happened')
                     </p>
 
                     <p>
-                        You can still access this site if the owner has provided you a password.
+                        {{ trans('blockade::messages.descriptions.access_with_password') }}
+                        @lang('blockade::messages.descriptions.access_with_password')
                     </p>
 
                 </div>

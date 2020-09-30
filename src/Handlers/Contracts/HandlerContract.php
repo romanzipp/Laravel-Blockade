@@ -52,7 +52,8 @@ interface HandlerContract
     /**
      * Get the response for failed or missing authentication.
      *
+     * @param array $data
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getFailedResponse(): SymfonyResponse;
+    public function getFailedResponse(array $data = []): SymfonyResponse;
 }

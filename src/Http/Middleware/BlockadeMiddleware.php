@@ -48,7 +48,9 @@ class BlockadeMiddleware
 
         // Attempt authenticating with the given authentication method
         if ( ! $this->handler->attemptAuthentication($request)) {
-            return $this->handler->getFailedResponse();
+            return $this->handler->getFailedResponse([
+                'message' => trans('blockade::messages.errors.wrong_password'),
+            ]);
         }
 
         return $this->handler->getSuccessResponse($request, $next);
