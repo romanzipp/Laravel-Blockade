@@ -49,7 +49,7 @@ Stores are storing (how surprising) the authentication state for later requests.
 
 ## Usage
 
-To enable Blockage, add the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) middleware to your HTTP kernel:
+To enable Blockade, add the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) middleware to your HTTP kernel:
 
 ```php
 namespace App\Http;
@@ -66,6 +66,12 @@ class Kernel extends HttpKernel
     ];
 }
 ```
+
+## Extending
+
+You can create your own authentication process by simply implementing the
+ - [`romanzipp\Blockade\Handlers\Contracts\HandlerContract`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Handlers/Contracts/HandlerContract.php) interface for handlers and
+ - [`romanzipp\Blockade\Stores\Contracts\StoreContract`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Stores/Contracts/StoreContract.php) interface for stores.
 
 ## Testing
 
