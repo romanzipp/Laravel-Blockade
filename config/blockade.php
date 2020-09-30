@@ -92,7 +92,7 @@ return [
 
             'name' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
 
-            'domain' => env('BLOCKADE_COOKIE_DOMAIN', env('APP_URL')),
+            'domain' => env('BLOCKADE_COOKIE_DOMAIN'),
 
             'duration' => 60 * 24 * 7,
 
