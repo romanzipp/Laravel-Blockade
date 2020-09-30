@@ -16,6 +16,7 @@ class TestCase extends BaseTestCase
         parent::setUp();
 
         config([
+            'app.debug' => true,
             'app.key' => 'base64:' . base64_encode(Encrypter::generateKey($this->app['config']['app.cipher'])),
         ]);
 
