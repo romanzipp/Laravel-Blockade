@@ -13,6 +13,12 @@ class CookieStore extends AbstractStore implements StoreContract
 {
     use ValidatesPassword;
 
+    /**
+     * Get the password hash for the given request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return string|null
+     */
     public function getHash(Request $request): ?string
     {
         return $request->cookie(
@@ -20,13 +26,19 @@ class CookieStore extends AbstractStore implements StoreContract
         );
     }
 
-    public function storeSuccessState(Request $request, SymfonyResponse $response): SymfonyResponse
+    /**
+     * Store the success state for the request and return a response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse $response
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function storeSuccessState(Request $request, $response): SymfonyResponse
     {
         if ( ! method_exists($response, 'withCookie')) {
             throw new RuntimeException('Can not set a cookie for the current response');
         }
 
-        /** @var $response \Illuminate\Http\Response */
         return $response->withCookie(
             $this->buildCookie()
         );

@@ -11,6 +11,12 @@ class SessionStore extends AbstractStore implements StoreContract
 {
     use ValidatesPassword;
 
+    /**
+     * Get the password hash for the given request.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return string|null
+     */
     public function getHash(Request $request): ?string
     {
         return $request->session()->get(
@@ -18,7 +24,14 @@ class SessionStore extends AbstractStore implements StoreContract
         );
     }
 
-    public function storeSuccessState(Request $request, SymfonyResponse $response): SymfonyResponse
+    /**
+     * Store the success state for the request and return a response.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse $response
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function storeSuccessState(Request $request, $response): SymfonyResponse
     {
         $request->session()->put(
             config('blockade.stores.session.key'),
