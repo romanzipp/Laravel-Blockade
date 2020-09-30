@@ -2,10 +2,13 @@
 
 namespace romanzipp\Blockade\Test;
 
+use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Handlers\FormHandler;
 
 class FormHandlerTest extends TestCase
 {
+    use ValidatesPassword;
+
     public function setUp(): void
     {
         parent::setUp();
@@ -33,5 +36,16 @@ class FormHandlerTest extends TestCase
 
         $response->assertStatus(401);
         $response->assertViewIs('blockade::password-form');
+    }
+
+    public function testAuthCorrectPassword()
+    {
+        $response = $this->post('/', [
+            'blockade_password' => 'foo',
+        ]);
+
+        $response->assertStatus(302);
+        $response->assertRedirect('/');
+        $response->assertCookie('blockade', $this->getPasswordHash('foo'));
     }
 }

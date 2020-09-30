@@ -2,11 +2,12 @@
 
 namespace romanzipp\Blockade\Test;
 
+use Illuminate\Contracts\Http\Kernel as BaseKernel;
+use Illuminate\Encryption\Encrypter;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Orchestra\Testbench\TestCase as BaseTestCase;
-use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
 use romanzipp\Blockade\Providers\BlockadeServiceProvider;
+use romanzipp\Blockade\Test\Support\Kernel;
 
 class TestCase extends BaseTestCase
 {
@@ -14,10 +15,14 @@ class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        Route::middleware([BlockadeMiddleware::class])->group(function () {
-            Route::get('/', function (Request $request) {
-                return 'Hello World';
-            });
+        config([
+            'app.key' => 'base64:' . base64_encode(Encrypter::generateKey($this->app['config']['app.cipher'])),
+        ]);
+
+        $this->app->singleton(BaseKernel::class, Kernel::class);
+
+        $this->app['router']->get('/', function (Request $request) {
+            return 'Hello World';
         });
     }
 
