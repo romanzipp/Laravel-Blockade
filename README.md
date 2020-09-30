@@ -17,7 +17,7 @@ romanzipp\Blockade\Providers\BlockadeServiceProvider::class,
 Copy configuration to config folder:
 
 ```
-$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\Seo'BlockadeServiceProvider"
+$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider"
 ```
 
 ## Usage
