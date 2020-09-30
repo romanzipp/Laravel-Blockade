@@ -25,15 +25,7 @@ abstract class AbstractHandler
      */
     public function isExcludedForRequest(Request $request): bool
     {
-        foreach (config('blockade.excluded') as $excludedRoute) {
-
-            if ( ! $request->is($excludedRoute)) {
-                continue;
-            }
-
-            return true;
-        }
-
-        return false;
+        return $request->is(...config('blockade.excluded'))
+            || $request->routeIs(...config('blockade.excluded'));
     }
 }
