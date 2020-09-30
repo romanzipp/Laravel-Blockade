@@ -13,11 +13,6 @@ return [
     'password' => env('BLOCKADE_PASSWORD', null),
 
     /**
-     * Specify the title displayed on the blockade view.
-     */
-    'title' => 'Under Construction',
-
-    /**
      * Define which routes should be excluded for blockade check.
      */
     'excluded' => [],
@@ -41,6 +36,19 @@ return [
      * @see \romanzipp\Blockade\Stores\SessionStore
      */
     'store' => \romanzipp\Blockade\Stores\CookieStore::class,
+
+    'branding' => [
+
+        /**
+         * Set the title displayed on the blockade view.
+         */
+        'title' => 'Under Construction',
+
+        /**
+         * Set a custom logo url.
+         */
+        'logo_url' => null,
+    ],
 
     /**
      * Specify options for each handler.

@@ -17,11 +17,15 @@ class BlockadeServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            dirname(__DIR__) . '/../config/blockade.php' => config_path('blockade.php'),
+            __DIR__ . '/../../config/blockade.php' => config_path('blockade.php'),
         ], 'config');
 
+        $this->publishes([
+            __DIR__ . '/../../assets' => public_path('vendor/blockade'),
+        ], 'public');
+
         $this->loadViewsFrom(
-            dirname(__DIR__) . '/../../views',
+            __DIR__ . '/../../views',
             'blockade'
         );
     }
@@ -34,7 +38,7 @@ class BlockadeServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            dirname(__DIR__) . '/../config/blockade.php',
+            __DIR__ . '/../../config/blockade.php',
             'blockade'
         );
 
