@@ -14,6 +14,32 @@ romanzipp\Blockade\Providers\BlockadeServiceProvider::class,
 
 ## Configuration
 
+Copy configuration to config folder:
+
+```
+$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\Seo'BlockadeServiceProvider"
+```
+
+## Usage
+
+Add the Blockade middleware to your HTTP kernel:
+
+```php
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
+
+class Kernel extends HttpKernel
+{
+    protected $middleware = [
+        // ...
+        BlockadeMiddleware::class,
+        // ...
+    ];
+}
+```
+
 ## Testing
 
 ```
