@@ -20,7 +20,9 @@
 
     <div class="flex flex-wrap justify-center">
 
-        <form method="post" action="">
+        <form method="post" action="{{ route('blockade.validate') }}">
+
+            <input type="hidden" name="return_to" value="{{ $returnTo }}">
 
             <div class="flex">
 
