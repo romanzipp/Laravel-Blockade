@@ -7,14 +7,15 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 abstract class AbstractHandler
 {
-    protected function getExcludedRoutes(): array
-    {
-        return config('blockade.excluded');
-    }
-
+    /**
+     * Check if the current request is excluded for blockade authentication.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return bool
+     */
     public function isExcludedForRequest(Request $request): bool
     {
-        foreach ($this->getExcludedRoutes() as $excludedRoute) {
+        foreach (config('blockade.excluded') as $excludedRoute) {
 
             if ( ! $request->is($excludedRoute)) {
                 continue;
@@ -26,6 +27,11 @@ abstract class AbstractHandler
         return false;
     }
 
+    /**
+     * Get the response for failed or missing authentication.
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function getFailedResponse(): SymfonyResponse
     {
         return response()->view('blockade::password', [], 401);
