@@ -55,7 +55,7 @@ return [
             /**
              * The input field provided from the view.
              */
-            'input_field' => 'blockage_password',
+            'input_field' => 'blockade_password',
 
         ],
 
@@ -67,7 +67,7 @@ return [
             /**
              * The query parameter to look for.
              */
-            'parameter' => 'blockage_password',
+            'parameter' => 'blockade_password',
         ],
 
     ],
