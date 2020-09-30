@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/packagist/l/romanzipp/Laravel-Blockade.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-blockade)
 [![GitHub Build Status](https://img.shields.io/github/workflow/status/romanzipp/Laravel-Blockade/Tests?style=flat-square)](https://github.com/romanzipp/Laravel-Blockade/actions)
 
-A simple but highly customizable package for preventing access to WIP Laravel projects.
+A simple but highly customizable package for preventing access to private or WIP Laravel projects.
 
 ## Installation
 
@@ -31,7 +31,7 @@ $ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeSe
 
 ### Handlers
 
-Handlers are responsible validating authentication requests and sending successful or failed responses. You can customize each handler via the `blockade.handlers.*` config entries.
+Handlers are responsible validating authentication requests and sending successful or failed responses. You can set the active handler in [`blockade.handler`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L33) and customize each handler individually via the [`blockade.handlers.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L48) config entries.
 
 | Handler | Description | Class |
 | --- | --- | --- |
@@ -40,7 +40,7 @@ Handlers are responsible validating authentication requests and sending successf
 
 ### Stores
 
-Stores are storing (how surprising) the authentication state for later requests. You can customize each handler via the `blockade.stores.*` config entries.
+Stores are storing (how surprising) the authentication state for later requests. You can set the active store in [`blockade.store`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L43) and customize each store individually via the [`blockade.stores.*`](https://github.com/romanzipp/Laravel-Blockade/blob/master/config/blockade.php#L78) config entries.
 
 | Store | Description | Class |
 | --- | --- | --- |
@@ -49,7 +49,7 @@ Stores are storing (how surprising) the authentication state for later requests.
 
 ## Usage
 
-Add the Blockade middleware to your HTTP kernel:
+To enable Blockage, add the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) middleware to your HTTP kernel:
 
 ```php
 namespace App\Http;
