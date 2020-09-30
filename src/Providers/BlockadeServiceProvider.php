@@ -31,6 +31,8 @@ class BlockadeServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'blockade');
 
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'blockade');
+
+        $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
     }
 
     /**
