@@ -29,6 +29,24 @@ Copy configuration to config folder:
 $ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider"
 ```
 
+### Handlers
+
+Handlers are responsible validating authentication requests and sending successful or failed responses. You can customize each handler via the `blockade.handlers.*` config entries.
+
+| Handler | Description | Class |
+| --- | --- | --- |
+| **Form** (default) | The password is provided by a form | [romanzipp\Blockade\Handlers\FormHandler](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Handlers/FormHandler.php) |
+| Query Parameter | The password is attached as query parameter | [romanzipp\Blockade\Handlers\QueryParameterHandler](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Handlers/QueryParameterHandler.php) | 
+
+### Stores
+
+Stores are storing (how surprising) the authentication state for later requests. You can customize each handler via the `blockade.stores.*` config entries.
+
+| Store | Description | Class |
+| --- | --- | --- |
+| **Cookies** (default) | The password hash will be stored as browser cookie | [romanzipp\Blockade\Stores\CookieStore](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Stores/CookieStore.php) |
+| Session | The password hash will be stored in the active session | [romanzipp\Blockade\Stores\SessionStore](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Stores/SessionStore.php) | 
+
 ## Usage
 
 Add the Blockade middleware to your HTTP kernel:
