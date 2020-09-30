@@ -69,6 +69,8 @@ class Kernel extends HttpKernel
 }
 ```
 
+**Important**: If you are using the `SessionStore` make sure the `BlockadeMiddleware` is appended **after** the `Illuminate\Session\Middleware\StartSession` middleware.
+
 ## Extending
 
 You can create your own authentication process by simply implementing the
