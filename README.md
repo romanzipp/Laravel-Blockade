@@ -9,6 +9,14 @@ A simple but highly customizable package for preventing access to private or WIP
 
 ![](https://raw.githubusercontent.com/romanzipp/Laravel-Blockade/master/preview.png)
 
+## Features
+
+- Convenient access control for private projects or pages
+- Simple, beautiful and fully customizable error page
+- Replaceable authentication process & token storage
+
+**Why not use the Laravel Maintenance Mode?** Blockade offers a simple way to share access to development or staging environments only by typing in a password. The authenticating user will return the intended URL after a successful login. The built in [Laravel Maintenance Mode](https://laravel.com/docs/8.x/configuration#maintenance-mode) uses a different approach by denying access in deployment or maintenance procedures.
+
 ## Installation
 
 ```
