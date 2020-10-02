@@ -20,7 +20,7 @@ composer require romanzipp/laravel-blockade
 Copy configuration & assets files to project folder:
 
 ```
-$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=config --tag=public
+php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=config --tag=public
 ```
 
 You can also publish views (`--tag=views`) and language files (`--tag=lang`) to further customize the Blockade template.
