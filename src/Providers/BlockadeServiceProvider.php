@@ -26,7 +26,7 @@ class BlockadeServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/blockade'),
-        ]);
+        ], 'lang');
 
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'blockade');
 
