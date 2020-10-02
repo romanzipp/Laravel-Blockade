@@ -15,20 +15,51 @@ A simple but highly customizable package for preventing access to private or WIP
 composer require romanzipp/laravel-blockade
 ```
 
-**If you use Laravel 5.5+ you are already done, otherwise continue.**
-
-Add Service Provider to your `app.php` configuration file:
-
-```php
-romanzipp\Blockade\Providers\BlockadeServiceProvider::class,
-```
-
 ## Configuration
 
-Copy configuration to config folder:
+Copy configuration & assets files to project folder:
 
 ```
-$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider"
+$ php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=config --tag=public
+```
+
+You can also publish views (`--tag=views`) and language files (`--tag=lang`) to further customize the Blockade template.
+
+## Usage
+
+To enable Blockade, simply register the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) class in your middleware stack.
+
+```php
+namespace App\Http;
+
+use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
+
+class Kernel extends HttpKernel
+{
+    // Globally for all routes
+
+    protected $middleware = [
+        // ...
+        BlockadeMiddleware::class,
+    ];
+
+    // In a single middleware group
+
+    protected $middlewareGroups = [
+        'web' => [
+            // ...
+            BlockadeMiddleware::class,
+        ]
+    ];
+
+    // As named middleware, applied in your routes file
+
+    protected $routeMiddleware = [
+        // ...
+        'blockade' => BlockadeMiddleware::class,
+    ];
+}
 ```
 
 ### Handlers
@@ -48,26 +79,6 @@ Stores are storing (how surprising) the authentication state for later requests.
 | --- | --- | --- |
 | **Cookies** (default) | The password hash will be stored as browser cookie | [romanzipp\Blockade\Stores\CookieStore](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Stores/CookieStore.php) |
 | Session | The password hash will be stored in the active session | [romanzipp\Blockade\Stores\SessionStore](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Stores/SessionStore.php) | 
-
-## Usage
-
-To enable Blockade, add the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) middleware to your HTTP kernel:
-
-```php
-namespace App\Http;
-
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use romanzipp\Blockade\Http\Middleware\BlockadeMiddleware;
-
-class Kernel extends HttpKernel
-{
-    protected $middleware = [
-        // ...
-        BlockadeMiddleware::class,
-        // ...
-    ];
-}
-```
 
 **Important**: If you are using the `SessionStore` make sure the `BlockadeMiddleware` is appended **after** the `Illuminate\Session\Middleware\StartSession` middleware.
 
