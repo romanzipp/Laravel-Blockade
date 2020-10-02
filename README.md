@@ -35,7 +35,10 @@ You can also publish views (`--tag=views`) and language files (`--tag=lang`) to 
 
 ## Usage
 
-To enable Blockade, simply register the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) class in your middleware stack.
+To enable Blockade, simply
+
+1. add the environment variables `BLOCKADE_ENABLED=true` & `BLOCKADE_PASSWORD=` and
+2. register the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) class in your middleware stack.
 
 ```php
 namespace App\Http;
@@ -69,6 +72,8 @@ class Kernel extends HttpKernel
     ];
 }
 ```
+
+To reset previous granted access, just change the `BLOCKADE_PASSWORD` entry. All issued access tokens will be invalid on the next page request.
 
 ### Handlers
 
