@@ -117,6 +117,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Build a redirect response.
      *
      * @param \Illuminate\Http\Request $request
+     * @param bool $success
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     protected function redirectBack(Request $request, bool $success = true)
