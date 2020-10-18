@@ -8,6 +8,7 @@ trait ValidatesPassword
      * Check if a given plaintext password matches the configured password.
      *
      * @param string $password
+     *
      * @return bool
      */
     protected function passwordMatchesConfigured(string $password): bool
@@ -19,6 +20,7 @@ trait ValidatesPassword
      * Check if a given has matches the configured password hash.
      *
      * @param string $hash
+     *
      * @return bool
      */
     protected function hashMatchesConfigured(string $hash): bool
@@ -30,6 +32,7 @@ trait ValidatesPassword
      * Generate a hash from a given plaintext password.
      *
      * @param string $password
+     *
      * @return string
      */
     protected function getPasswordHash(string $password): string

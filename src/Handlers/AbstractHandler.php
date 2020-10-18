@@ -22,6 +22,7 @@ abstract class AbstractHandler
      * Check if the current request is excluded for blockade authentication.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     public function isExcludedForRequest(Request $request): bool
@@ -36,6 +37,7 @@ abstract class AbstractHandler
      * @param \Illuminate\Http\Request $request
      * @param string $view
      * @param array $data
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function displayView(Request $request, string $view, array $data = []): SymfonyResponse

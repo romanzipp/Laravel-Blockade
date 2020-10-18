@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'title' => 'Under Construction',
 
     'errors' => [
@@ -15,5 +14,4 @@ return [
 
     'password' => 'Password',
     'submit' => 'Submit',
-
 ];
