@@ -21,6 +21,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Check if the current request is already authenticated.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     public function isAuthenticated(Request $request): bool
@@ -36,6 +37,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Check if the current request is attempting authentication.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     public function requestAttemptsAuthentication(Request $request): bool
@@ -48,6 +50,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Attempt the blockade authentication.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     public function attemptAuthentication(Request $request): bool
@@ -68,6 +71,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      *
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse
@@ -88,6 +92,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      *
      * @param \Illuminate\Http\Request $request
      * @param array $data
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getFailedResponse(Request $request, array $data = []): SymfonyResponse
@@ -106,6 +111,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Check if the request has a "return to" field.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return bool
      */
     protected function requestWantsToReturn(Request $request): bool
@@ -118,6 +124,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      *
      * @param \Illuminate\Http\Request $request
      * @param bool $success
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     protected function redirectBack(Request $request, bool $success = true)
