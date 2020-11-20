@@ -3,6 +3,7 @@
 namespace romanzipp\Blockade\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use romanzipp\Blockade\Console\Commands\InstallBlockadeCommand;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use romanzipp\Blockade\Services\Blockade;
 use romanzipp\Blockade\Stores\Contracts\StoreContract;
@@ -25,6 +26,10 @@ class BlockadeServiceProvider extends ServiceProvider
         ], 'public');
 
         $this->publishes([
+            __DIR__ . '/../../resources/views' => resource_path('views/vendor/blockade'),
+        ], 'views');
+
+        $this->publishes([
             __DIR__ . '/../../resources/lang' => resource_path('lang/vendor/blockade'),
         ], 'lang');
 
@@ -33,6 +38,12 @@ class BlockadeServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'blockade');
 
         $this->loadRoutesFrom(__DIR__ . '/../../routes/routes.php');
+
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallBlockadeCommand::class,
+            ]);
+        }
     }
 
     /**
