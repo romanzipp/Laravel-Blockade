@@ -13,6 +13,8 @@ return [
 
     /*
      * Define which routes should be excluded for blockade check.
+     * You can specify route names or paths including wildcards.
+     * The routes will be check via the Request::is() and Request::routeIs() methods.
      */
     'excluded' => [],
 
@@ -20,9 +22,8 @@ return [
      * Specify the authentication handler used for granting access.
      *
      * Available handlers:
-     *
-     * @see \romanzipp\Blockade\Handlers\FormHandler
-     * @see \romanzipp\Blockade\Handlers\QueryParameterHandler
+     * - \romanzipp\Blockade\Handlers\FormHandler::class
+     * - \romanzipp\Blockade\Handlers\QueryParameterHandler::class
      */
     'handler' => \romanzipp\Blockade\Handlers\FormHandler::class,
 
@@ -30,9 +31,8 @@ return [
      * Specify where to store the authentication state.
      *
      * Available stores:
-     *
-     * @see \romanzipp\Blockade\Stores\CookieStore
-     * @see \romanzipp\Blockade\Stores\SessionStore
+     * - \romanzipp\Blockade\Stores\CookieStore::class
+     * - \romanzipp\Blockade\Stores\SessionStore::class
      */
     'store' => \romanzipp\Blockade\Stores\CookieStore::class,
 
@@ -63,16 +63,12 @@ return [
      * Specify options for each handler.
      */
     'handlers' => [
-        /*
-         * @see \romanzipp\Blockade\Handlers\FormHandler
-         */
+        /* @see \romanzipp\Blockade\Handlers\FormHandler */
         'form' => [
             'input_field' => 'blockade_password',
         ],
 
-        /*
-         * @see \romanzipp\Blockade\Handlers\QueryParameterHandler
-         */
+        /* @see \romanzipp\Blockade\Handlers\QueryParameterHandler */
         'query' => [
             'parameter' => 'blockade_password',
         ],
@@ -82,9 +78,7 @@ return [
      * Stores define where to store a successful authentication state.
      */
     'stores' => [
-        /*
-         * @see \romanzipp\Blockade\Stores\CookieStore
-         */
+        /* @see \romanzipp\Blockade\Stores\CookieStore */
         'cookie' => [
             'name' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
 
@@ -95,9 +89,7 @@ return [
             'path' => null,
         ],
 
-        /*
-         * @see \romanzipp\Blockade\Stores\SessionStore
-         */
+        /* @see \romanzipp\Blockade\Stores\SessionStore */
         'session' => [
             'key' => env('BLOCKADE_SESSION_KEY', 'blockade_hash'),
         ],
