@@ -8,6 +8,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 abstract class AbstractHandler
 {
+    private const CSS_ASSET_PATH = 'vendor/blockade/tailwind.css';
     /**
      * @var \romanzipp\Blockade\Stores\Contracts\StoreContract
      */
@@ -43,7 +44,22 @@ abstract class AbstractHandler
     protected function displayView(Request $request, string $view, array $data = []): SymfonyResponse
     {
         $data['returnTo'] = $request->fullUrl();
+        $data['cssAsset'] = $this->getCssAssetUrl();
 
         return response()->view($view, $data, 401);
+    }
+
+    /**
+     * If the CSS asset has not been published a fallback version from the unpkg CDN will be used.
+     *
+     * @return string
+     */
+    private function getCssAssetUrl(): string
+    {
+        if ( ! file_exists(public_path(self::CSS_ASSET_PATH))) {
+            return 'https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css';
+        }
+
+        return asset(self::CSS_ASSET_PATH);
     }
 }
