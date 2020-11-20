@@ -7,7 +7,7 @@
 
     <title>{{ trans('blockade::messages.title') }}</title>
 
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ $cssAsset }}" rel="stylesheet">
 
 </head>
 <body class="bg-gray-100">
@@ -32,7 +32,9 @@
 
             <div class="flex justify-center">
 
-                <img src="{{ asset('vendor/blockade/illustration_server_down.svg') }}" class="h-32 sm:h-64">
+                <img src="{{ asset('vendor/blockade/illustration_server_down.svg') }}"
+                     alt="Blockade Under Construction Illustration"
+                     class="h-32 sm:h-64">
 
             </div>
 
