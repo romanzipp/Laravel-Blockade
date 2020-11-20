@@ -14,7 +14,7 @@
 
     <div class="flex flex-col justify-center justify-between" style="height: 100vh">
 
-        <div class="flex justify-center py-8 border-b text-xl font-bold text-blue-700">
+        <div class="flex justify-center py-8 border-b border-gray-300 text-xl font-bold text-blue-700">
 
             @if(config('blockade.branding.logo_url'))
 
@@ -28,7 +28,7 @@
 
         </div>
 
-        <div class="flex flex-col items-center my-8 px-8">
+        <div class="flex flex-col items-center my-8 sm:px-8">
 
             <div class="flex justify-center">
 
@@ -36,7 +36,7 @@
 
             </div>
 
-            <div class="mt-12 sm:mt-16 py-8 px-12 bg-white rounded-lg shadow-xl space-y-6">
+            <div class="w-full sm:w-auto mt-12 sm:mt-16 py-8 px-12 bg-white sm:rounded-lg shadow-xl space-y-6">
 
                 @yield('content')
 
@@ -44,9 +44,9 @@
 
         </div>
 
-        <div class="py-8 border-t border-gray-400">
+        <div class="py-8 border-t border-gray-300">
 
-            <div class="container mx-auto text-xs text-center text-gray-700">
+            <div class="container mx-auto text-xs text-center text-gray-600">
                 {{ config('app.name') }}
             </div>
 

@@ -20,20 +20,20 @@
 
     <div class="flex flex-wrap justify-center">
 
-        <form method="post" action="{{ route('blockade.validate') }}">
+        <form method="post" action="{{ route('blockade.validate') }}" class="w-full sm:w-auto">
 
             <input type="hidden" name="return_to" value="{{ $returnTo }}">
 
-            <div class="flex">
+            <div class="flex flex-col sm:flex-row">
 
                 <input type="password"
                        name="{{ config('blockade.handlers.form.input_field') }}"
                        placeholder="{{ trans('blockade::messages.password') }}"
-                       autofocus
-                       class="px-4 py-2 bg-gray-200 rounded-l-md outline-none focus:bg-gray-300 transition-colors duration-150 placeholder-gray-600">
+                       class="px-4 py-2 bg-gray-200 text-center sm:text-left text-sm rounded-t-md sm:rounded-t-none sm:rounded-l-md outline-none focus:bg-gray-300 transition-colors duration-150 placeholder-gray-500"
+                       autofocus>
 
                 <button type="submit"
-                        class="bg-blue-600 hover:bg-blue-700 transition-colors duration-100 px-6 py-2 rounded-r-md uppercase text-sm text-white outline-none">
+                        class="bg-blue-600 hover:bg-blue-700 transition-colors duration-100 px-6 py-2 rounded-b-md sm:rounded-b-none sm:rounded-r-md uppercase text-sm text-white outline-none">
                     {{ trans('blockade::messages.submit') }}
                 </button>
 
