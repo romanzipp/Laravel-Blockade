@@ -37,8 +37,8 @@ You can also publish views (`--tag=views`) and language files (`--tag=lang`) to 
 
 To enable Blockade, simply
 
-1. add the environment variables `BLOCKADE_ENABLED=true` & `BLOCKADE_PASSWORD=` and
-2. register the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) class in your middleware stack.
+1. Set the environment variables `BLOCKADE_ENABLED=true` & `BLOCKADE_PASSWORD=`
+2. Register the [`BlockadeMiddleware`](https://github.com/romanzipp/Laravel-Blockade/blob/master/src/Http/Middleware/BlockadeMiddleware.php) class in your middleware stack.
 
 ```php
 namespace App\Http;
@@ -72,6 +72,8 @@ class Kernel extends HttpKernel
     ];
 }
 ```
+
+The package defaults to the provided view for password prompt and stores the authentication hash in a cookie.
 
 To reset previous granted access, just change the `BLOCKADE_PASSWORD` entry. All issued access tokens will be invalid on the next page request.
 
