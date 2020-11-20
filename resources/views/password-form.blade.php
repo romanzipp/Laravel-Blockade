@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <h1 class="text-center text-2xl sm:text-3xl font-bold">
+    <h1 class="text-center text-2xl sm:text-3xl font-bold dark:text-white">
         {{ trans('blockade::messages.title') }}
     </h1>
 
-    <div class="space-y-1 text-gray-700 text-sm">
+    <div class="space-y-1 text-sm text-gray-700 dark:text-gray-300">
 
         <p>
             {{ trans('blockade::messages.descriptions.what_happened') }}
