@@ -11,7 +11,11 @@ class InstallBlockadeCommand extends Command
 
     public function handle(): void
     {
-        $tags = ['public', 'config'];
+        $tags = ['public'];
+
+        if ( ! $this->option('update')) {
+            $tags[] = 'config';
+        }
 
         if ($this->option('views')) {
             $tags[] = 'views';
