@@ -28,10 +28,10 @@ composer require romanzipp/laravel-blockade
 Copy configuration & assets files to project folder:
 
 ```
-php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=config --tag=public
+php artisan blockade:install
 ```
 
-You can also publish views (`--tag=views`) and language files (`--tag=lang`) to further customize the Blockade template.
+You can also publish views (`--views`) and language files (`--lang`) to further customize the Blockade template.
 
 ## Usage
 
@@ -107,10 +107,10 @@ You can create your own authentication process by simply implementing the
 
 It is recommended to publish the provided css files via the [`vendor:publish`](#configuration) command listed at the top. If the bundled asset file is not available we will use a fallback from [unkpg.com](https://unpkg.com) and display an error notice in the footer section.
 
-Please use the `--force` argument to update the published asset.
+Use the `--update` argument to update the published assets.
 
 ```
-php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=public --force
+php artisan blockade:install --update
 ```
 
 ## Testing
