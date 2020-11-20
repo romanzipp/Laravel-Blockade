@@ -107,6 +107,12 @@ You can create your own authentication process by simply implementing the
 
 It is recommended to publish the provided css files via the [`vendor:publish`](#configuration) command listed at the top. If the bundled asset file is not available we will use a fallback from [unkpg.com](https://unpkg.com) and display an error notice in the footer section.
 
+Please use the `--force` argument to update the published asset.
+
+```
+php artisan vendor:publish --provider="romanzipp\Blockade\Providers\BlockadeServiceProvider" --tag=public --force
+```
+
 ## Testing
 
 ```
