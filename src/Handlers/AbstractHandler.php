@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 abstract class AbstractHandler
 {
-    private const CSS_ASSET_PATH = 'vendor/blockade/tailwind.css';
+    private const CSS_ASSET_PATH = 'vendor/blockade/blockade.css';
     /**
      * @var \romanzipp\Blockade\Stores\Contracts\StoreContract
      */

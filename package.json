@@ -1,16 +1,18 @@
 {
   "scripts": {
     "prod": "yarn production",
-    "production": "NODE_ENV=production npx -p postcss -p autoprefixer -c \"tailwindcss build ./resources/css/tailwind.css -o ./resources/assets/tailwind.css\"",
+    "production": "NODE_ENV=production npx -p postcss -p autoprefixer -c \"tailwindcss build\" | postcss > ./resources/assets/blockade.css",
     "dev": "yarn development",
-    "development": "npx -p postcss -p autoprefixer -c \"tailwindcss build ./resources/css/tailwind.css -o ./resources/assets/tailwind.css\""
+    "development": "npx -p postcss -p autoprefixer -c \"tailwindcss build -o ./resources/assets/blockade.css\""
   },
   "dependencies": {
     "autoprefixer": "^10.0.2",
+    "cssnano": "^4.1.10",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "postcss": "^8.1.8",
+    "postcss-cli": "^8.3.0",
     "tailwindcss": "^2.0.1"
   }
 }
