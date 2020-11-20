@@ -109,6 +109,20 @@ You can create your own authentication process by simply implementing the
 ./vendor/bin/phpunit
 ```
 
+## Build Frontend
+
+### Development
+
+```
+yarn dev
+```
+
+### Production
+
+```
+yarn prod
+```
+
 ## Credits
 
 Special thanks to [Katerina Limpitsouni](https://twitter.com/ninaLimpi) for the awesome [unDraw](https://undraw.co) SVG illustrations!
