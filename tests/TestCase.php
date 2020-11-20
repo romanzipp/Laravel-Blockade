@@ -9,7 +9,7 @@ use Orchestra\Testbench\TestCase as BaseTestCase;
 use romanzipp\Blockade\Providers\BlockadeServiceProvider;
 use romanzipp\Blockade\Test\Support\Kernel;
 
-class TestCase extends BaseTestCase
+abstract class TestCase extends BaseTestCase
 {
     public function setUp(): void
     {
