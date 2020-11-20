@@ -45,8 +45,19 @@ abstract class AbstractHandler
     {
         $data['returnTo'] = $request->fullUrl();
         $data['cssAsset'] = $this->getCssAssetUrl();
+        $data['cssAssetLocal'] = $this->isCssAssetAvailableLocally();
 
         return response()->view($view, $data, 401);
+    }
+
+    /**
+     * Check if the CSS asset provided by the package has been published.
+     *
+     * @return bool
+     */
+    private function isCssAssetAvailableLocally(): bool
+    {
+        return file_exists(public_path(self::CSS_ASSET_PATH));
     }
 
     /**
@@ -56,7 +67,7 @@ abstract class AbstractHandler
      */
     private function getCssAssetUrl(): string
     {
-        if ( ! file_exists(public_path(self::CSS_ASSET_PATH))) {
+        if ( ! $this->isCssAssetAvailableLocally()) {
             return 'https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css';
         }
 

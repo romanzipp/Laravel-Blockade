@@ -48,8 +48,20 @@
 
         <div class="py-8 border-t border-gray-300">
 
-            <div class="container mx-auto text-xs text-center text-gray-600">
-                {{ config('app.name') }}
+            <div class="container mx-auto space-y-4 text-xs text-center text-gray-600 ">
+
+                <div>
+                    {{ config('app.name') }}
+                </div>
+
+                @if( ! $cssAssetLocal)
+                    <div>
+                        <a href="https://github.com/romanzipp/Laravel-Blockade#assets" class="text-red-600 font-semibold" rel="nofollow">
+                            DEVELOPER NOTICE
+                        </a>
+                    </div>
+                @endif
+
             </div>
 
         </div>

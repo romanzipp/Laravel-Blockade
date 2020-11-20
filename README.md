@@ -102,6 +102,10 @@ Stores are storing (how surprising) the authentication state for later requests.
 You can create your own authentication process by simply implementing the
  - [`romanzipp\Blockade\Handlers\Contracts\HandlerContract`](./src/Handlers/Contracts/HandlerContract.php) interface for handlers and
  - [`romanzipp\Blockade\Stores\Contracts\StoreContract`](./src/Stores/Contracts/StoreContract.php) interface for stores.
+ 
+## Assets
+
+It is recommended to publish the provided css files via the [`vendor:publish`](#configuration) command listed at the top. If the bundled asset file is not available we will use a fallback from [unkpg.com](https://unpkg.com) and display an error notice in the footer section.
 
 ## Testing
 
