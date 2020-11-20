@@ -14,11 +14,7 @@ module.exports = {
     rules: {
         indent: ['error', 4],
         'max-len': 'off',
-        'import/no-unresolved': 'off',
         'no-restricted-syntax': 'off',
-    },
-    settings: {
-        'import/resolver': 'webpack',
     },
     globals: {
         process: true,
