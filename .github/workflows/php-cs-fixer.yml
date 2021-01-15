@@ -16,7 +16,7 @@ jobs:
       - name: Setup PHP
         uses: nanasess/setup-php@master
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 7.4
 
       - name: Install dependencies
         run: composer install --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
