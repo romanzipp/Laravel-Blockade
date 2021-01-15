@@ -10,8 +10,6 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
 
       - name: Setup PHP
         uses: nanasess/setup-php@master
@@ -28,4 +26,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Fix styling
-
