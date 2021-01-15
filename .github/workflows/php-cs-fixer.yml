@@ -13,8 +13,16 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
 
-      - name: PHP-CS-Fixer
-        uses: docker://oskarstark/php-cs-fixer-ga
+      - name: Setup PHP
+        uses: nanasess/setup-php@master
+        with:
+          php-version: ${{ matrix.php }}
+
+      - name: Install dependencies
+        run: composer install --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+
+      - name: Execute PHP-CS-Fixer
+        run: vendor/bin/php-cs-fixer fix
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
