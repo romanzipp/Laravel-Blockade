@@ -11,11 +11,10 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class FormHandler extends AbstractHandler implements HandlerContract
 {
+    use ValidatesPassword;
     private const INPUT_RETURN_TO = 'return_to';
 
     private const QUERY_ERROR = 'blockade_error';
-
-    use ValidatesPassword;
 
     /**
      * Check if the current request is already authenticated.
