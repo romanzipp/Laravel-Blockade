@@ -15,7 +15,9 @@ A simple but highly customizable package for preventing access to private or WIP
 - Simple, beautiful and fully customizable error page
 - Replaceable authentication process & token storage
 
-**Why not use the Laravel Maintenance Mode?** Blockade offers a simple way to share access to development or staging environments only by typing in a password. The authenticating user will return the intended URL after a successful login. The built in [Laravel Maintenance Mode](https://laravel.com/docs/8.x/configuration#maintenance-mode) uses a different approach by denying access in deployment or maintenance procedures.
+#### Why just not use the Laravel Maintenance Mode?
+
+Blockade offers a simple way to share access to development or staging environments only by typing in a password. The authenticating user will return the intended URL after a successful login. The built in [Laravel Maintenance Mode](https://laravel.com/docs/8.x/configuration#maintenance-mode) uses a different approach by denying access in deployment or maintenance procedures.
 
 ## Installation
 
@@ -32,6 +34,8 @@ php artisan blockade:install
 ```
 
 You can also publish views (`--views`) and language files (`--lang`) to further customize the Blockade template.
+
+Make use of the [`--update`](#assets) parameter if you are seeing an error message at the bottom.
 
 ## Usage
 
@@ -73,13 +77,13 @@ class Kernel extends HttpKernel
 }
 ```
 
-The package defaults to the provided view for password prompt and stores the authentication hash in a cookie.
+The package defaults to the provided view for **password prompt** and stores the authentication hash in a **cookie**.
 
 To reset previous granted access, just change the `BLOCKADE_PASSWORD` entry. All issued access tokens will be invalid on the next page request.
 
 ### Handlers
 
-Handlers are responsible validating authentication requests and sending successful or failed responses. You can set the active handler in [`blockade.handler`](./config/blockade.php#L28) and customize each handler individually via the [`blockade.handlers.*`](./config/blockade.php#L51) config entries.
+Handlers are responsible for validating authentication requests and sending successful or failed responses. You can set the active handler in [`blockade.handler`](./config/blockade.php#L28) and customize each handler individually via the [`blockade.handlers.*`](./config/blockade.php#L65) config entries.
 
 | Handler | Description | Class |
 | --- | --- | --- |
@@ -88,7 +92,7 @@ Handlers are responsible validating authentication requests and sending successf
 
 ### Stores
 
-Stores are storing (how surprising) the authentication state for later requests. You can set the active store in [`blockade.store`](./config/blockade.php#L38) and customize each store individually via the [`blockade.stores.*`](./config/blockade.php#L81) config entries.
+Stores are storing (how surprising) the authentication state for later requests. You can set the active store in [`blockade.store`](./config/blockade.php#L37) and customize each store individually via the [`blockade.stores.*`](./config/blockade.php#L80) config entries.
 
 | Store | Description | Class |
 | --- | --- | --- |
@@ -112,6 +116,12 @@ Use the `--update` argument to update the published assets.
 ```
 php artisan blockade:install --update
 ```
+
+## Disclamer
+
+#### This is no cryptographically secure authentication
+
+The package stores the authentication token as SHA 256 hash of the configured password.
 
 ## Testing
 
