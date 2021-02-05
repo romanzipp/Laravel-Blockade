@@ -63,12 +63,12 @@ return [
      * Specify options for each handler.
      */
     'handlers' => [
-        /* @see \romanzipp\Blockade\Handlers\FormHandler */
+        /** @see \romanzipp\Blockade\Handlers\FormHandler */
         'form' => [
             'input_field' => 'blockade_password',
         ],
 
-        /* @see \romanzipp\Blockade\Handlers\QueryParameterHandler */
+        /** @see \romanzipp\Blockade\Handlers\QueryParameterHandler */
         'query' => [
             'parameter' => 'blockade_password',
         ],
@@ -78,7 +78,7 @@ return [
      * Stores define where to store a successful authentication state.
      */
     'stores' => [
-        /* @see \romanzipp\Blockade\Stores\CookieStore */
+        /** @see \romanzipp\Blockade\Stores\CookieStore */
         'cookie' => [
             'name' => env('BLOCKADE_COOKIE_NAME', 'blockade'),
 
@@ -89,7 +89,7 @@ return [
             'path' => null,
         ],
 
-        /* @see \romanzipp\Blockade\Stores\SessionStore */
+        /** @see \romanzipp\Blockade\Stores\SessionStore */
         'session' => [
             'key' => env('BLOCKADE_SESSION_KEY', 'blockade_hash'),
         ],
