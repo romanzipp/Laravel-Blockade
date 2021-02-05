@@ -19,6 +19,11 @@ A simple but highly customizable package for preventing access to private or WIP
 
 Blockade offers a simple way to share access to development or staging environments only by typing in a password. The authenticating user will return the intended URL after a successful login. The built in [Laravel Maintenance Mode](https://laravel.com/docs/8.x/configuration#maintenance-mode) uses a different approach by denying access in deployment or maintenance procedures.
 
+#### Do we need yet another access control package?
+
+Yes! From my experience, other maintenance mode packages (and similar) only rely on one authentication method which is either cookie or session based. When working on many projects with different tech stacks, some drivers like session storage in API-only projects are simply not available.
+Blockade is meant to solve this issue by combining several auth mechanisms in one package.
+
 ## Installation
 
 ```
