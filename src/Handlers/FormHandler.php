@@ -99,6 +99,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
         if ($this->requestWantsToReturn($request)) {
             return $this->redirectBack($request, false);
         }
+
         if ($request->has(self::QUERY_ERROR)) {
             $data['message'] = trans('blockade::messages.errors.wrong_password');
         }
