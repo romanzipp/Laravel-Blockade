@@ -37,7 +37,7 @@ abstract class AbstractHandler
      *
      * @param \Illuminate\Http\Request $request
      * @param string $view
-     * @param array $data
+     * @param array<string, mixed> $data
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
