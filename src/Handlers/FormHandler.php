@@ -90,7 +90,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      * Get the response for failed or missing authentication.
      *
      * @param \Illuminate\Http\Request $request
-     * @param array $data
+     * @param array<string, mixed> $data
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
