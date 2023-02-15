@@ -2,7 +2,6 @@
 
 namespace romanzipp\Blockade\Handlers\Contracts;
 
-use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -52,7 +51,7 @@ interface HandlerContract
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse;
+    public function getSuccessResponse(Request $request, \Closure $next): SymfonyResponse;
 
     /**
      * Get the response for failed or missing authentication.

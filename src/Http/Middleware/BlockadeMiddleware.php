@@ -2,7 +2,6 @@
 
 namespace romanzipp\Blockade\Http\Middleware;
 
-use Closure;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
 use romanzipp\Blockade\Services\Blockade;
 
@@ -26,7 +25,7 @@ class BlockadeMiddleware
      *
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, \Closure $next)
     {
         if ( ! Blockade::isEnabled()) {
             return $next($request);
