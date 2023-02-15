@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/romanzipp/Laravel-Blockade.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-blockade)
 [![Total Downloads](https://img.shields.io/packagist/dt/romanzipp/Laravel-Blockade.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-blockade)
 [![License](https://img.shields.io/packagist/l/romanzipp/Laravel-Blockade.svg?style=flat-square)](https://packagist.org/packages/romanzipp/laravel-blockade)
-[![GitHub Build Status](https://img.shields.io/github/workflow/status/romanzipp/Laravel-Blockade/Tests?style=flat-square)](https://github.com/romanzipp/Laravel-Blockade/actions)
+[![GitHub Build Status](https://img.shields.io/github/actions/workflow/status/romanzipp/Laravel-Blockade/tests.yml?branch=master&label=tests&style=flat-square)](https://github.com/romanzipp/Laravel-Blockade/actions)
 
 A simple but highly customizable package for preventing access to private or WIP Laravel projects.
 
