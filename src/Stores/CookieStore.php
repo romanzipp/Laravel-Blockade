@@ -5,7 +5,6 @@ namespace romanzipp\Blockade\Stores;
 use Illuminate\Http\Request;
 use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Stores\Contracts\StoreContract;
-use RuntimeException;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
@@ -38,7 +37,7 @@ class CookieStore extends AbstractStore implements StoreContract
     public function storeSuccessState(Request $request, $response): SymfonyResponse
     {
         if ( ! method_exists($response, 'withCookie')) {
-            throw new RuntimeException('Can not set a cookie for the current response');
+            throw new \RuntimeException('Can not set a cookie for the current response');
         }
 
         return $response->withCookie(

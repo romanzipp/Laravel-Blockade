@@ -2,7 +2,6 @@
 
 namespace romanzipp\Blockade\Handlers;
 
-use Closure;
 use Illuminate\Http\Request;
 use romanzipp\Blockade\Concerns\ValidatesPassword;
 use romanzipp\Blockade\Handlers\Contracts\HandlerContract;
@@ -73,7 +72,7 @@ class FormHandler extends AbstractHandler implements HandlerContract
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function getSuccessResponse(Request $request, Closure $next): SymfonyResponse
+    public function getSuccessResponse(Request $request, \Closure $next): SymfonyResponse
     {
         $response = redirect(
             $request->fullUrl()
