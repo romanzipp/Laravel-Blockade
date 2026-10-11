@@ -9,15 +9,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: [ "7.1", "7.2", "7.3", "7.4", "8.0", "8.1", "8.2", "8.3" ]
+        php: [ "8.3", "8.4", "8.5" ]
         composer-dependency: [ prefer-stable, prefer-lowest ]
-        exclude:
-          - php: "8.1"
-            composer-dependency: prefer-lowest
-          - php: "8.2"
-            composer-dependency: prefer-lowest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -26,7 +21,7 @@ jobs:
           coverage: none
 
       - name: Install dependencies
-        run: composer update --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist --${{ matrix.composer-dependency }}
+        run: composer update --no-interaction --no-scripts --no-progress --prefer-dist --${{ matrix.composer-dependency }}
 
       - name: Execute tests
         run: vendor/bin/phpunit
